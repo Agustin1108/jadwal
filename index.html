@@ -1,0 +1,123 @@
+<!DOCTYPE html><html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jadwal Penerimaan KPMS</title>
+  <style>
+    :root {
+      --ungu: #6a0dad;
+      --hitam: #1e1e1e;
+      --putih: #ffffff;
+      --abu-ungu: #e2d2f3;
+    }body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--hitam);
+  color: var(--putih);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.container {
+  background: linear-gradient(145deg, var(--ungu), var(--abu-ungu));
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.3);
+  max-width: 600px;
+  width: 100%;
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+  text-align: center;
+  color: var(--putih);
+  margin-bottom: 1.5rem;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background-color: var(--putih);
+  color: var(--hitam);
+  margin: 0.75rem 0;
+  padding: 1rem;
+  border-radius: 12px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+li:hover {
+  transform: scale(1.03);
+  background-color: var(--abu-ungu);
+}
+
+.highlight {
+  background-color: #ffd700 !important;
+  color: #000 !important;
+}
+
+.description {
+  display: none;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--hitam);
+  background-color: #f0f0f0;
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Jadwal Penerimaan KPMS</h1>
+    <ul id="jadwal-list">
+      <li data-date="2025-06-10">
+        10 Juni 2025 - Wawancara Sesi 1
+        <div class="description">Sesi wawancara pertama untuk calon anggota baru. Persiapkan diri!</div>
+      </li>
+      <li data-date="2025-06-11">
+        11 Juni 2025 - Wawancara Sesi 2
+        <div class="description">Sesi wawancara kedua. Pastikan sudah memahami visi dan misi komunitas KPMS.</div>
+      </li>
+      <li data-date="2025-06-12">
+        12 Juni 2025 - Wawancara Sesi 3
+        <div class="description">Sesi wawancara terakhir. Tunjukkan antusiasme dan semangat kolaborasi dalam komunitas.</div>
+      </li>
+      <li data-date="2025-06-15">
+        15 Juni 2025 - Hasil Wawancara
+        <div class="description">Pengumuman hasil seleksi akan ditampilkan melalui grup calon.</div>
+      </li>
+    </ul>
+  </div>  <script>
+    const today = new Date().toISOString().split('T')[0];
+    const items = document.querySelectorAll('#jadwal-list li');
+
+    items.forEach(item => {
+      const itemDate = item.getAttribute('data-date');
+      if (itemDate === today) {
+        item.classList.add('highlight');
+      }
+
+      item.addEventListener('click', () => {
+        const desc = item.querySelector('.description');
+        const isVisible = desc.style.display === 'block';
+
+        document.querySelectorAll('.description').forEach(d => d.style.display = 'none');
+        desc.style.display = isVisible ? 'none' : 'block';
+      });
+    });
+  </script></body>
+  </html
